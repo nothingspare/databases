@@ -1,0 +1,11 @@
+version: "3.4"
+services:
+  sqlserver-2017_CU2:
+    image: microsoft/mssql-server-linux:2017-CU2
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: ${DBA_PASSWORD}
+    ports:
+      - "1433:1433"
+    volumes:
+      - "./data/sqlserver-2017_CU2:/var/opt/mssql"

@@ -1,0 +1,13 @@
+version: "3.4"
+services:
+  oracle11g:
+    image: "wnameless/oracle-xe-11g"
+    environment:
+      ORACLE_ENABLE_XDB: "true"
+      ORACLE_ALLOW_REMOTE: "true"
+      ORACLE_DISABLE_ASYNCH_IO: "true"
+    ports:
+      - "1521:1521"
+      - "8000:8080"
+#    volumes:
+#      - "./data:/u01/app/oracle/oradata"
