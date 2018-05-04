@@ -1,0 +1,24 @@
+version: "3"
+services:
+  db:
+    image: "mysql:5.7"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DBA_PASSWORD}
+      - MYSQL_USER=${DBA_USERNAME}
+      - MYSQL_PASSWORD=${DBA_PASSWORD}
+      - MYSQL_DATABASE=${DBA_USERNAME}
+    ports:
+      - "3307:3306"
+    volumes:
+      - "./data/5_7:/var/lib/mysql"
+  pma:
+    image: "phpmyadmin/phpmyadmin:4.8.0-3"
+    depends_on:
+      - db
+    environment:
+      - PMA_HOST=db
+      - PMA_POST=3306
+      - PMA_USER=${DBA_USERNAME}
+      - PMA_PASSWORD=${DBA_PASSWORD}
+    ports:
+      - "3080:80"
